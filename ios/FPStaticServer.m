@@ -26,7 +26,9 @@ RCT_EXPORT_MODULE();
 
 - (dispatch_queue_t)methodQueue
 {
-    return dispatch_queue_create("com.futurepress.staticserver", DISPATCH_QUEUE_SERIAL);
+    // return dispatch_queue_create("com.futurepress.staticserver", DISPATCH_QUEUE_SERIAL);
+    // use main queue to prevent errors in the web server when checkin for [[UIApplication sharedApplication] applicationState]
+    return dispatch_get_main_queue();
 }
 
 
